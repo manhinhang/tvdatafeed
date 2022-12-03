@@ -32,7 +32,7 @@ class Interval(enum.Enum):
 class TvDatafeed:
     __sign_in_url = 'https://www.tradingview.com/accounts/signin/'
     __search_url = 'https://symbol-search.tradingview.com/symbol_search/?text={}&hl=1&exchange={}&lang=en&type=&domain=production'
-    __ws_headers = json.dumps({"Origin": "https://data.tradingview.com"})
+    __ws_headers = json.dumps({"Origin": "https://prodata.tradingview.com"})
     __signin_headers = {'Referer': 'https://www.tradingview.com'}
     __ws_timeout = 5
 
@@ -84,7 +84,7 @@ class TvDatafeed:
     def __create_connection(self):
         logging.debug("creating websocket connection")
         self.ws = create_connection(
-            "wss://data.tradingview.com/socket.io/websocket", headers=self.__ws_headers, timeout=self.__ws_timeout
+            "wss://prodata.tradingview.com/socket.io/websocket", headers=self.__ws_headers, timeout=self.__ws_timeout
         )
 
     @staticmethod
